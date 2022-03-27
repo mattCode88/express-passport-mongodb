@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "sass": "sass -w scss/:assets/css/"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "express-session": "^1.17.2",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.8",
+    "node-sass": "^7.0.1",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0"
   }

@@ -3,6 +3,7 @@ const session = require('express-session');
 const passport = require('passport');
 const dotenv = require('dotenv');
 const flash = require('connect-flash');
+const path = require('path');
 
 const connectDb = require('./server/config/db-connection');
 
@@ -18,6 +19,10 @@ dotenv.config({ path: '.env' });
 const PORT = process.env.PORT || 8000;
 
 app.set('view engine', 'ejs');
+
+app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
+app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
+app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
 app.use(flash());
 

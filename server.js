@@ -29,7 +29,7 @@ app.use(flash());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: 'chiaveSegreta123',
+    secret: process.env.CHIAVE_SEGRETA,
     saveUninitialized: false,
     resave: false
 }))

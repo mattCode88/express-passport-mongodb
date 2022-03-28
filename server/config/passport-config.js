@@ -11,10 +11,16 @@ passport.use('local-login', new LocalStrategy({ passReqToCallback: true }, async
     //     return done(null, user);
     // }
     const user = await UserCollection.findOne({ username: username });
-    const bool = bcrypt.compareSync(password, user.password);
-    if (!user || !bool) {
-        return done(null, false, { message: req.flash('loginFallito', 'I dati non sono corretti!')});
+    // const bool = bcrypt.compareSync(password, user.password);
+    if (!user) {
+        return done(null, false, { message: req.flash('loginFallito', 'Username non corretto!')});
     }
+
+    const bool = bcrypt.compareSync(password, user.password);
+    if (!bool) {
+        return done(null, false, { message: req.flash('loginFallito', 'Password non corretta!')});
+    }
+    
     return done(null, user);
     // return done(null, false, { message: req.flash('loginFallito', 'I dati non sono corretti!')});
 }));

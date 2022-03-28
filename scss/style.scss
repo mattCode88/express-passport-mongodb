@@ -1,3 +1,22 @@
-body {
-  background-color: crimson;
+@import "partials/_log-nav.scss";
+@import "partials/_auth-nav.scss";
+@import "partials/_log-form.scss";
+@import "partials/_register-form.scss";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 100%;
+}
+.flex {
+  display: flex;
+}
+.align-center {
+  text-align: center;
+}
+.hidden {
+  display: none;
 }

@@ -1,10 +1,24 @@
 const UserCollection = require('../model/User');
 const bcrypt = require('bcrypt');
 
-exports.create = (req, res) => {
-    //validate request
-    if (!req.body) {
-        res.status(400).send({ message: 'Inserisci i dati correttamente!' });
+exports.create = async (req, res) => {
+   
+    const duplicateUser = await UserCollection.findOne({ username: req.body.username });
+    const duplicateEmail = await UserCollection.findOne({ email: req.body.email });
+
+    if (duplicateUser !== null) {
+        req.flash('err-message', 'Username non disponibile!');
+        res.redirect('/register');
+        return
+    }
+    if (duplicateEmail !== null) {
+        req.flash('err-message', 'Email già registrata!');
+        res.redirect('/register');
+        return
+    }
+    if (!req.body.username || !req.body.email || !req.body.password) {
+        req.flash('err-message', 'Inserisci tutti i campi correttamente!');
+        res.redirect('/register');
         return
     }
 

@@ -1,39 +1,41 @@
-// const { ObjectID } = require('bson');
+//configuro autenticazione
 const { ObjectID } = require('mongodb');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const UserCollection = require('../model/User');
 
+//setto l' utilizzo della strategia passport-local
 passport.use('local-login', new LocalStrategy({ passReqToCallback: true }, async (req, username, password, done) => {
-    // if (username == 'matteo' && password == '123') {
-    //     const user = { id: 1, username: 'matteo' };
-    //     return done(null, user);
-    // }
+    
+    //ricerco utente per username
     const user = await UserCollection.findOne({ username: username });
-    // const bool = bcrypt.compareSync(password, user.password);
+
+    //se non lo trovo ritorno un messaggio flash di errore
     if (!user) {
         return done(null, false, { message: req.flash('loginFallito', 'Username non corretto!')});
     }
 
+    //comparo password inserita nel form con quella hashata salvata nel DB
     const bool = bcrypt.compareSync(password, user.password);
+
+    //se le password non corrispondono ritorno messaggio flash di errore
     if (!bool) {
         return done(null, false, { message: req.flash('loginFallito', 'Password non corretta!')});
     }
     
+    //se passo i controlli ritorno l' utente con la funzione done()
     return done(null, user);
-    // return done(null, false, { message: req.flash('loginFallito', 'I dati non sono corretti!')});
+
 }));
 
-// user.password !== password
-
+//salvo nella sessione l' id utente autenticato per riconoscerlo ad ogni richista
 passport.serializeUser((user, done) => {
-    // done(null, user.id)
     done(null, user._id)
 });
 
+//alla richiesta recupero l' utente memorizzato in sessione nel DB e lo associo a req.user
 passport.deserializeUser(async (id, done) => {
-    // const user = { id: 1, username: 'matteo' };
     const user = await UserCollection.findOne({ _id: ObjectID(id) });
     done(null, user);
 })

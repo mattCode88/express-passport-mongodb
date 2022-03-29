@@ -1,3 +1,4 @@
+//importo mongoose
 const mongoose = require('mongoose');
 
 //creo funzione asincrona di connessione al db che importo in server.js

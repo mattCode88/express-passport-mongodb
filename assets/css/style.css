@@ -313,6 +313,21 @@
   margin-top: 2em;
 }
 
+.dashboard-show {
+  padding: 5em;
+}
+.dashboard-show-container-cards {
+  flex-wrap: wrap;
+  padding: 3em 1em;
+}
+.dashboard-show-container-cards-card {
+  margin: 0.5em;
+  width: calc(20% - 1em);
+}
+.dashboard-show-container-cards-card img {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

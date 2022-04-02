@@ -12,7 +12,17 @@
     </section>
 
     <section class="dashboard-show dashboard-page">
-        <h1>show</h1>
+        <h1>Le mie carte</h1>
+        <div class="dashboard-show-container-cards flex">
+        <% cards.forEach(card => { %>
+            <div class="dashboard-show-container-cards-card">
+                <img src="<%= card.image %>" alt="">
+            </div>
+                
+            
+            
+        <% }) %>
+        </div>
     </section>
 
 

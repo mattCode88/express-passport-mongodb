@@ -5,4 +5,6 @@ const cardController = require('../controller/card-controller');
 
 router.post('/card/create', cardController.create);
 
+router.get('/card/show', cardController.find);
+
 module.exports = router;

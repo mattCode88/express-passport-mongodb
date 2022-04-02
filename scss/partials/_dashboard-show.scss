@@ -1,0 +1,16 @@
+.dashboard-show {
+  //   background-color: crimson;
+  padding: 5em;
+  &-container-cards {
+    flex-wrap: wrap;
+    padding: 3em 1em;
+    &-card {
+      margin: 0.5em;
+      width: calc(20% - 1em);
+      img {
+        width: 100%;
+      }
+      //   padding: 3em 1em;
+    }
+  }
+}

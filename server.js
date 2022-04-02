@@ -5,6 +5,7 @@ const passport = require('passport');
 const dotenv = require('dotenv');
 const flash = require('connect-flash');
 const path = require('path');
+const bodyparser = require('body-parser');
 
 //funzione di connessione al DB
 const connectDb = require('./server/config/db-connection');
@@ -25,13 +26,15 @@ const app = express();
 dotenv.config({ path: '.env' });
 const PORT = process.env.PORT || 8000;
 
+app.use(bodyparser.urlencoded({ extended: true }));
+
 //setto template engine
 app.set('view engine', 'ejs');
 
 //espongo file statici
-app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
-app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
-app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
+app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
+app.use('/img', express.static(path.resolve(__dirname, "assets/img")));
+app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
 
 //setto uso flash per messaggi flash
 app.use(flash());

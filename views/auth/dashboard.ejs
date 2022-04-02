@@ -5,7 +5,38 @@
 
 </header>
 
-<h1>dashboard</h1>
+<main class="dashboard-main">
+
+    <h1 class="align-center">Dashboard di <%= user %></h1>
+
+    <div class="dashboard-main-content flex">
+        
+        <a href="dashboard/messaggi" class="dashboard-main-content-card">
+            <h2 class="align-center">Messaggi</h2>
+            <p class="align-center">Accedi alla tua area personale Messaggi, dove potrai visualizzare tutti i messaggi che gli utenti ti hanno inviato.</p>
+        </a>
+
+        <a href="dashboard/show" class="dashboard-main-content-card">
+            <h2 class="align-center">Carte</h2>
+            <p class="align-center">Accedi alla tua area personale Carte, dove potrai visualizzare tutte le carte che hai messo in vendita.</p>
+        </a>
+
+        <a href="dashboard/statistiche" class="dashboard-main-content-card">
+            <h2 class="align-center">Carrello</h2>
+            <p class="align-center">Accedi alla tua area personale Statistiche, dove potrai visualizzare i feedback e le visualizzazioni degli utenti.</p>
+        </a>
+
+        <a href="dashboard/create" class="dashboard-main-content-card">
+            <h2 class="align-center">Create</h2>
+            <p class="align-center">Accedi alla tua area personale Create, dove potrai inserire nuove carte da vendere.</p>
+        </a>
+
+    </div>
 
 
+
+</main>
+
+
+</div>
 <%- include('./../partials/_footer') %>

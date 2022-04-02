@@ -1,0 +1,21 @@
+.dashboard-panel {
+  padding: 2em 0;
+  color: #fff;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  &-title {
+    padding-bottom: 1em;
+  }
+  &-component {
+    height: 3em;
+    align-items: center;
+    padding: 0 2em;
+  }
+  &-component:hover {
+    background-color: crimson;
+    color: #000;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,11 @@
+.dashboard-pages {
+  width: 100%;
+  height: 3000px;
+  .dashboard-component {
+    width: 20%;
+    background-color: #444;
+  }
+  .dashboard-page {
+    width: 80%;
+  }
+}

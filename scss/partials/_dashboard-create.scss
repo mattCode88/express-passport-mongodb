@@ -1,0 +1,85 @@
+.dashboard-create {
+  width: 100%;
+  padding: 5em;
+  input {
+    margin-top: 1em;
+    appearance: none;
+    border: none;
+    border-bottom: 1px solid #333;
+    color: #333;
+    padding: 0.8em;
+  }
+  input:focus-within {
+    outline: none;
+  }
+  input::placeholder {
+    color: #000;
+  }
+  button {
+    margin-left: 2em;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+  button:hover {
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #333;
+    font-weight: bold;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  h1 {
+    color: crimson;
+  }
+  &-search {
+    margin-top: 1em;
+    .error-message-duplicate {
+      padding-top: 2em;
+      color: crimson;
+    }
+  }
+  &-cards {
+    flex-wrap: wrap;
+    padding: 3em 1em;
+    .container-card {
+      position: relative;
+      width: calc(20% - 1em);
+      margin: 0.5em;
+      img {
+        width: 100%;
+      }
+      .card-info {
+        display: none;
+      }
+    }
+  }
+  &-choose {
+    margin-top: 3em;
+    &-text {
+      padding-left: 2em;
+      #error-mex-number,
+      #error-mex-price {
+        color: crimson;
+        font-weight: bold;
+      }
+      & > * {
+        margin-bottom: 1em;
+      }
+      & button {
+        margin-top: 2em;
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@ const connectDb = require('./server/config/db-connection');
 const checkAuth = require('./server/middleware/check-auth');
 
 //routes
+const cardApi = require('./server/api/cards-api');
 const logApi = require('./server/api/log-api');
 const logRoute = require('./server/routes/log-routes');
 const authRoute = require('./server/routes/auth/auth-routes');
@@ -56,6 +57,7 @@ app.use(passport.session());
 app.use(logRoute);
 app.use('/auth', checkAuth(), authRoute);
 app.use('/api', logApi);
+app.use('/api', cardApi);
 
 //metto in ascolto il server
 app.listen(PORT, () => console.log(`Server in ascolto sula porta ${PORT}`));

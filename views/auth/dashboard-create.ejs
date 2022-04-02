@@ -1,0 +1,78 @@
+<%- include('./../partials/_head') %>
+
+
+    <%- include('partials/_auth-nav') %>
+
+        </header>
+
+        <main class="dashboard-pages flex">
+
+            <section class="dashboard-component">
+                <%- include('partials/_dashboard-component') %>
+            </section>
+
+
+
+
+            <dashboard-create class="dashboard-create dashboard-page">
+
+                <h1>Metti in vendita le tue carte!!!</h1>
+                <!-- <%= user %> -->
+
+                <div class="dashboard-create-search">
+                    <div>Cerca la carta che vuoi mettere in vendita e aggiungila alla tua collezione(nome in inglese):
+                    </div>
+                    <input type="search" id="card-name" placeholder="Name Carta">
+                    <button id="search-cards">Cerca</button>
+                    <div id="error-message-duplicate" class="error-message-duplicate"><%= message %></div>
+                </div>
+
+                <div id="choose" class="dashboard-create-choose hidden">
+
+                    <div class="dashboard-create-choose-image">
+                        <img id="image-choose-card" src="" alt="">
+                    </div>
+
+                    <div class="dashboard-create-choose-text">
+                        <h3>Mettila subito in vendita, scegli quantità e prezzo!</h3>
+                        
+                        <div><input id="input-number-card" type="number" placeholder="1" value=""></div>
+                        <div><input id="input-price-card" type="number" step="0.01" placeholder="1.00" value=""></div>
+                        <div><button id="save-card">Salva</button></div>
+                        <div class="hidden" id="error-mex-number">Inserisci la quantità!!!</div>
+                        <div class="hidden" id="error-mex-price">Inserisci il prezzo!!!</div>
+                    </div>
+
+                    <form class="dashboard-create-choose-form hidden" id="hidden-form" action="/api/card/create" method="POST">
+                        <input type="text" name="username" value="<%= user %>">
+                    </form>
+
+
+                </div>
+
+                <div id="card" class="dashboard-create-cards flex">
+
+                </div>
+            </dashboard-create>
+
+
+        </main>
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <script src="/js/dashboard-create.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- <script type="module">
+            import DashboardCreate from '/js/if.js';
+            customElements.define('dashboard-create', DashboardCreate);
+        </script> -->
+        <%- include('./../partials/_footer') %>

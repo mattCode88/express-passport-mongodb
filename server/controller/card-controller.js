@@ -14,6 +14,9 @@ exports.create = async (req, res) => {
 
     const colors = req.body.color.split(',');
 
+    // if(colors.includes('undefined')) 
+    const mappedColors = colors.map(a => a === 'undefined' ? 'Colorless' : a);
+
     const tipologie = req.body.tipo.split(',');
 
     const card = new CardCollection({
@@ -24,9 +27,11 @@ exports.create = async (req, res) => {
         edizione: req.body.edizione,
         descrizione: req.body.descrizione,
         prezzo: req.body.prezzo,
-        colori: colors,
+        colori: mappedColors,
         tipi: tipologie,
-        rarita: req.body.rarita
+        rarita: req.body.rarita,
+        inVendita: req.body.vendita,
+        daVendere: req.body.daVendere
     });
 
     card

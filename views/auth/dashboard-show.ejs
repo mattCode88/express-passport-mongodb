@@ -7,26 +7,64 @@
 
 <main class="dashboard-pages flex">
 
+
+
     <section class="dashboard-component">
         <%- include('partials/_dashboard-component') %>
     </section>
 
     <section class="dashboard-show dashboard-page">
-        <h1>Le mie carte</h1>
-        <div class="dashboard-show-container-cards flex">
-        <% cards.forEach(card => { %>
-            <div class="dashboard-show-container-cards-card">
-                <img src="<%= card.image %>" alt="">
+
+        <h1 class="align-center">Le mie carte</h1>
+
+        <div class="container-filter align-center">
+            
+            <label for="tipi">TIPO</label>
+            <select name="tipi" id="select-type" class="select">
+                <option value="All">ALL</option>
+            </select>
+            
+            <label for="colori">COLORE</label>
+            <select name="colori" id="select-color" class="select">
+                <option value="All">ALL</option>
+            </select>
+            <label for="edizione">EDIZIONE</label>
+            <select name="edizione" id="select-ediction" class="select">
+                <option value="All">ALL</option>
+            </select>
+
+            <label for="rarita">RARITA'</label>
+            <select name="rarita" id="select-rarity" class="select">
+                <option value="All">ALL</option>
+            </select>
+            
+            <label for="daVendere">IN VENDITA</label>
+            <select name="daVendere" id="select-toSell" class="select">
+                <option value="All">ALL</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <div class="container-filter-btn">
+                <button id="btn-search">Cerca</button>
             </div>
-                
-            
-            
-        <% }) %>
+
         </div>
+
+
+        <!-- <button id="reset">Reset All</button> -->
+   
+        <div class="dashboard-show-container-cards flex" id="dashboard-show-container-cards">
+        
+        </div>
+    
     </section>
 
 
 </main>
 
 </div>
+
+<script src="/js/dashboard-show.js"></script>
+
 <%- include('./../partials/_footer') %>

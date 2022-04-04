@@ -13,6 +13,7 @@ const card = document.getElementById('card'),
 
 let img, div, divText, divInfoName, divInfoEdizione, divInfoDescription, divInfoColors, divInfoTypes, divInfoRarity,
     inputCardImage, inputQuantità, inputCardName, inputCardEdizione, inputCardText, inputPrice, inputCardColor, inputCardType, inputCardRarity,
+    inputCardInVendita, inputCardDaVendere,
     nameCard, imageCard, edizioneCard, descrizioneCard, colorsCard, typesCard, rarityCard,
     hiddenFormChild;
 
@@ -144,6 +145,8 @@ const createHiddenForm = (quantitaCarta, prezzoCarta) => {
     inputCardColor = document.createElement('INPUT');
     inputCardType = document.createElement('INPUT');
     inputCardRarity = document.createElement('INPUT');
+    inputCardInVendita = document.createElement('INPUT');
+    inputCardDaVendere = document.createElement('INPUT');
 
     inputCardImage.setAttribute('type', 'text');
     inputQuantità.setAttribute('type', 'number');
@@ -152,9 +155,11 @@ const createHiddenForm = (quantitaCarta, prezzoCarta) => {
     inputCardText.setAttribute('type', 'text');
     inputPrice.setAttribute('type', 'number');
     inputPrice.setAttribute('step', '0.01');
-    inputCardColor.setAttribute('type', 'string')
-    inputCardType.setAttribute('type', 'string')
-    inputCardRarity.setAttribute('type', 'string')
+    inputCardColor.setAttribute('type', 'string');
+    inputCardType.setAttribute('type', 'string');
+    inputCardRarity.setAttribute('type', 'string');
+    inputCardInVendita.setAttribute('type', 'string');
+    inputCardDaVendere.setAttribute('type', 'number');
 
     inputCardImage.setAttribute('name', 'image');
     inputQuantità.setAttribute('name', 'quantita');
@@ -165,6 +170,8 @@ const createHiddenForm = (quantitaCarta, prezzoCarta) => {
     inputCardColor.setAttribute('name', 'color');
     inputCardType.setAttribute('name', 'tipo');
     inputCardRarity.setAttribute('name', 'rarita');
+    inputCardInVendita.setAttribute('name', 'vendita');
+    inputCardDaVendere.setAttribute('name', 'daVendere');
 
     inputCardImage.setAttribute('value', imageCard);
     inputQuantità.setAttribute('value', quantitaCarta);
@@ -175,6 +182,8 @@ const createHiddenForm = (quantitaCarta, prezzoCarta) => {
     inputCardColor.setAttribute('value', colorsCard);
     inputCardType.setAttribute('value', typesCard);
     inputCardRarity.setAttribute('value', rarityCard);
+    inputCardInVendita.setAttribute('value', 'false');
+    inputCardDaVendere.setAttribute('value', 0);
 
     hiddenForm.appendChild(inputCardImage);
     hiddenForm.appendChild(inputQuantità);
@@ -185,6 +194,8 @@ const createHiddenForm = (quantitaCarta, prezzoCarta) => {
     hiddenForm.appendChild(inputCardColor);
     hiddenForm.appendChild(inputCardType);
     hiddenForm.appendChild(inputCardRarity);
+    hiddenForm.appendChild(inputCardInVendita);
+    hiddenForm.appendChild(inputCardDaVendere);
 
     hiddenFormChild = document.querySelectorAll('#hidden-form > input');
 }

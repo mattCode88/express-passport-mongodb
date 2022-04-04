@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     quantita: {
-        type: String,
+        type: Number,
         required: true,
     },
     name: {
@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     prezzo: {
-        type: String,
+        type: Number,
         required: true,
     },
     colori: {
@@ -40,7 +40,16 @@ const schema = new mongoose.Schema({
     rarita: {
         type: String,
         required: true
+    },
+    inVendita: {
+        type: Boolean,
+        required: true
+    },
+    daVendere: {
+        type: Number,
+        required: true
     }
+
 });
 
 const CardCollection = mongoose.model('cardCollections', schema);

@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const flash = require('connect-flash');
 const path = require('path');
 const bodyparser = require('body-parser');
+const methodOverride = require('method-override');
 
 //funzione di connessione al DB
 const connectDb = require('./server/config/db-connection');
@@ -27,6 +28,8 @@ dotenv.config({ path: '.env' });
 const PORT = process.env.PORT || 8000;
 
 app.use(bodyparser.urlencoded({ extended: true }));
+
+app.use(methodOverride('_method'));
 
 //setto template engine
 app.set('view engine', 'ejs');

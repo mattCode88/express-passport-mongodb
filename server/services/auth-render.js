@@ -11,7 +11,8 @@ exports.showCards = (req, res) => {
             res.render('auth/dashboard-show', {
                 titlePage: 'Show',
                 user: username,
-                cards: ris.data
+                cards: ris.data,
+                message: req.flash('status-update')
             });
         }).catch(err => res.send(err));
 }

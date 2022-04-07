@@ -7,7 +7,7 @@
 
 <main class="dashboard-pages flex">
 
-
+   
 
     <section class="dashboard-component">
         <%- include('partials/_dashboard-component') %>
@@ -51,6 +51,8 @@
 
         </div>
 
+        <%= message %>
+
 
         <!-- <button id="reset">Reset All</button> -->
    
@@ -65,6 +67,11 @@
 
 </div>
 
-<script src="/js/dashboard-show.js"></script>
+<!-- <script src="/js/dashboard-show-2.js"></script> -->
+
+<script type="module">
+    import DashboardShow from '/js/dashboard-show/dashboard-show-2.js';
+    document.addEventListener('DOMContentLoaded', e => new DashboardShow())
+</script>
 
 <%- include('./../partials/_footer') %>

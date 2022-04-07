@@ -49,3 +49,56 @@ exports.find = async (req, res) => {
     res.send(cards);
 
 }
+
+exports.update = async (req, res) => {
+
+    const card = await CardCollection.findById(req.body.id);
+
+    if (req.body.prezzo <= 0 || req.body.quantita <= 0 || req.body.daVendere < 0) {
+        req.flash('status-update', `Inserisci dati possibili!!!`);
+        res.redirect('/auth/dashboard/show');
+        return
+    }
+
+    if (req.body.daVendere > req.body.quantita) {
+        req.flash('status-update', `Non possiedi ${req.body.daVendere} ${card.name} da vendere!!!`);
+        res.redirect('/auth/dashboard/show');
+        return
+    }
+
+    if (req.body.daVendere > 0) {
+        req.body.inVendita = true;
+    } else {
+        req.body.inVendita = false;
+    }
+
+    CardCollection.findByIdAndUpdate(req.body.id, req.body, { useFindAndModify: false })
+        .then(data => {
+            if (!data) {
+                res.status(400).send({ message: `La carta con id: ${req.body.id} non è stata trovata!` })
+            } else {
+                res.redirect('/auth/dashboard/show');
+            }
+        }).catch(err => {
+            res.status(500).send({ message: "Errore nell' aggiornamento delle informazioni!" })
+        });    
+
+}
+
+exports.delete = async (req, res) => {
+    
+
+    CardCollection.findByIdAndDelete(req.body.id)
+        .then(data => {
+            if(!data){
+                res.status(404).send({ message : `La carta con id: ${req.body.id} non è stata trovata!`})
+            }else{
+                res.redirect('/auth/dashboard/show');
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message: "Errore nell' aggiornamento delle informazioni!" 
+            });
+        });
+}

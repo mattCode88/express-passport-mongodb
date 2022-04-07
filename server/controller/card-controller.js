@@ -14,7 +14,6 @@ exports.create = async (req, res) => {
 
     const colors = req.body.color.split(',');
 
-    // if(colors.includes('undefined')) 
     const mappedColors = colors.map(a => a === 'undefined' ? 'Colorless' : a);
 
     const tipologie = req.body.tipo.split(',');
@@ -54,19 +53,19 @@ exports.update = async (req, res) => {
 
     const card = await CardCollection.findById(req.body.id);
 
-    if (req.body.prezzo <= 0 || req.body.quantita <= 0 || req.body.daVendere < 0) {
+    if (+req.body.prezzo <= 0 || +req.body.quantita <= 0 || +req.body.daVendere < 0) {
         req.flash('status-update', `Inserisci dati possibili!!!`);
         res.redirect('/auth/dashboard/show');
         return
     }
 
-    if (req.body.daVendere > req.body.quantita) {
+    if (+req.body.daVendere > +req.body.quantita) {
         req.flash('status-update', `Non possiedi ${req.body.daVendere} ${card.name} da vendere!!!`);
         res.redirect('/auth/dashboard/show');
         return
     }
 
-    if (req.body.daVendere > 0) {
+    if (+req.body.daVendere > 0) {
         req.body.inVendita = true;
     } else {
         req.body.inVendita = false;

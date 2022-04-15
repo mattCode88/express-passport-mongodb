@@ -14,17 +14,22 @@ export default class CardGenerator{
 
     createCards = (json) => {
         this.containerCrads.innerHTML = '';
+        this.divRow = document.createElement('DIV');
+        this.divRow.classList.add('row');
         json.forEach(element => {
 
             this.divContainer = document.createElement('DIV');
             this.divContainerImg = document.createElement('DIV');
             this.divContainerText = document.createElement('DIV');
+            this.divText = document.createElement('DIV');
             this.imgCard = document.createElement('IMG');
             this.divName = document.createElement('DIV');
             this.divEdiction = document.createElement('DIV');
+
             this.divExit = document.createElement('DIV');
             this.spanName = document.createElement('SPAN');
             this.spanEdiction = document.createElement('SPAN');
+
             this.spanExit = document.createElement('SPAN');
             this.updateForm = document.createElement('FORM');
             this.deleteForm = document.createElement('FORM');
@@ -44,9 +49,15 @@ export default class CardGenerator{
             this.btnCancella = document.createElement('BUTTON');
 
             this.divContainer.classList.add('dashboard-show-container-cards-container');
-            this.divContainerImg.classList.add('dashboard-show-container-cards-container-img');
+            this.divContainer.classList.add('col-3', 'col-lg-4', 'col-md-6', 'col-xs-12');
+            this.divContainerImg.classList.add('dashboard-show-container-cards-container-img', 'pointer');
             this.divContainerText.classList.add('dashboard-show-container-cards-container-text');
             this.divContainerText.classList.add('hidden');
+            this.btnContainer.classList.add('btn-container');
+            this.btnAggiorna.classList.add('btn-aggiorna');
+            this.btnCancella.classList.add('btn-cancella');
+            this.divContainerText.style.backgroundImage = `url(${element.image})`;
+            this.divText.classList.add('opacity-text');
             this.groupFormPrice.classList.add('form-group');
             this.groupFormQuantita.classList.add('form-group');
             this.groupFormVendere.classList.add('form-group');
@@ -80,9 +91,9 @@ export default class CardGenerator{
             this.labelPrice.setAttribute('for', 'prezzo');
             this.labelQuantita.setAttribute('for', 'quantita');
             this.labelVendere.setAttribute('for', 'daVendere');
-            this.labelPrice.appendChild(document.createTextNode('Prezzo '));
-            this.labelQuantita.appendChild(document.createTextNode('Quantità '));
-            this.labelVendere.appendChild(document.createTextNode('In vendita '));
+            this.labelPrice.appendChild(document.createTextNode('Prezzo: '));
+            this.labelQuantita.appendChild(document.createTextNode('Quantità: '));
+            this.labelVendere.appendChild(document.createTextNode('In vendita: '));
 
             this.inputPrice.setAttribute('name', 'prezzo');
             this.inputQuantita.setAttribute('name', 'quantita');
@@ -109,12 +120,14 @@ export default class CardGenerator{
             this.groupFormVendere.appendChild(this.inputVendere);
 
             this.divContainerImg.appendChild(this.imgCard);
-            this.divContainerText.appendChild(this.divExit);
-            this.divContainerText.appendChild(this.divName);
-            this.divContainerText.appendChild(this.divEdiction);
-            this.divContainerText.appendChild(this.updateForm);
-            this.divContainerText.appendChild(this.deleteForm);
-            this.divContainerText.appendChild(this.btnContainer);
+            this.divText.appendChild(this.divExit);
+            this.divText.appendChild(this.divName);
+            this.divText.appendChild(this.divEdiction);
+            this.divText.appendChild(this.updateForm);
+            this.divText.appendChild(this.deleteForm);
+            this.divText.appendChild(this.btnContainer);
+
+            this.divContainerText.appendChild(this.divText);
 
             this.updateForm.appendChild(this.groupFormPrice);
             this.updateForm.appendChild(this.groupFormQuantita);
@@ -125,9 +138,10 @@ export default class CardGenerator{
             this.divContainer.appendChild(this.divContainerImg);
             this.divContainer.appendChild(this.divContainerText);
 
-            this.containerCrads.appendChild(this.divContainer);
+            this.divRow.appendChild(this.divContainer);
 
         });
+        this.containerCrads.appendChild(this.divRow);
     }
 
     generateOptionsReference = (json) => {

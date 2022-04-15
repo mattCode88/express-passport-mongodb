@@ -5,69 +5,102 @@
 
 </header>
 
-<main class="dashboard-pages flex">
+<main class="container">
 
-   
+    <div class="row dashboard-pages">
 
-    <section class="dashboard-component">
-        <%- include('partials/_dashboard-component') %>
-    </section>
+        <section class="dashboard-component col-2 col-md-1">
+            <%- include('partials/_dashboard-component') %>
+        </section>
 
-    <section class="dashboard-show dashboard-page">
 
-        <h1 class="align-center">Le mie carte</h1>
+        <section class="dashboard-show col-10 col-md-11">
 
-        <div class="container-filter align-center">
+            <h1 class="">Le mie carte</h1>
+
+            <button id="filter-show">Ricerca avanzata</button>
+
+            <div><%= message %></div>
+
+            <div class="dashboard-show-filter hidden" id="dashboard-show-filter">
+                
+                <div>
+                    <label for="tipi">TIPO</label>
+                    <select name="tipi" id="select-type" class="select">
+                        <option value="All">ALL</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="colori">COLORE</label>
+                    <select name="colori" id="select-color" class="select">
+                        <option value="All">ALL</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="edizione">EDIZIONE</label>
+                    <select name="edizione" id="select-ediction" class="select">
+                        <option value="All">ALL</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="rarita">RARITA'</label>
+                    <select name="rarita" id="select-rarity" class="select">
+                        <option value="All">ALL</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="daVendere">IN VENDITA</label>
+                    <select name="daVendere" id="select-toSell" class="select">
+                        <option value="All">ALL</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <div class="container-filter-btn">
+                    <button id="btn-search">Cerca</button>
+                </div>
+                
+                <div>
+                    <label for="name">NOME</label>
+                    <input type="text" placeholder="Enter per cercare" id="name-search">
+                </div>
+
+            </div>
             
-            <label for="tipi">TIPO</label>
-            <select name="tipi" id="select-type" class="select">
-                <option value="All">ALL</option>
-            </select>
             
-            <label for="colori">COLORE</label>
-            <select name="colori" id="select-color" class="select">
-                <option value="All">ALL</option>
-            </select>
-            <label for="edizione">EDIZIONE</label>
-            <select name="edizione" id="select-ediction" class="select">
-                <option value="All">ALL</option>
-            </select>
 
-            <label for="rarita">RARITA'</label>
-            <select name="rarita" id="select-rarity" class="select">
-                <option value="All">ALL</option>
-            </select>
+            <div class="row dashboard-show-container-cards" id="dashboard-show-container-cards">
+               
             
-            <label for="daVendere">IN VENDITA</label>
-            <select name="daVendere" id="select-toSell" class="select">
-                <option value="All">ALL</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
 
-            <div class="container-filter-btn">
-                <button id="btn-search">Cerca</button>
             </div>
 
-        </div>
-
-        <%= message %>
+            
 
 
-        <!-- <button id="reset">Reset All</button> -->
-   
-        <div class="dashboard-show-container-cards flex" id="dashboard-show-container-cards">
-        
-        </div>
-    
-    </section>
+
+        </section>
+
+
+
+
+
+    </div>
+
+
 
 
 </main>
 
-</div>
 
-<!-- <script src="/js/dashboard-show-2.js"></script> -->
+
+
+</div>
 
 <script type="module">
     import DashboardShow from '/js/dashboard-show.js';

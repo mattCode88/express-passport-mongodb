@@ -110,7 +110,7 @@ const createCards = (array) => {
             divInfoRarity = document.createElement('DIV');
             img = document.createElement('IMG');
             img.setAttribute('src', element.imageUrl);
-            div.classList.add('container-card');
+            div.classList.add('container-card', 'col-3', 'col-lg-4', 'col-md-6', 'col-xs-12');
             divText.classList.add('card-info');
 
             divInfoName.appendChild(document.createTextNode(element.name));

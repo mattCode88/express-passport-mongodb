@@ -7,14 +7,14 @@
 
         <main class="dashboard-pages flex">
 
-            <section class="dashboard-component">
+            <section class="dashboard-component col-2 col-md-1">
                 <%- include('partials/_dashboard-component') %>
             </section>
 
 
 
 
-            <dashboard-create class="dashboard-create dashboard-page">
+            <div class="dashboard-create dashboard-page col-10 col-md-11">
 
                 <h1>Metti in vendita le tue carte!!!</h1>
                 <!-- <%= user %> -->
@@ -22,18 +22,18 @@
                 <div class="dashboard-create-search">
                     <div>Cerca la carta che vuoi mettere in vendita e aggiungila alla tua collezione(nome in inglese):
                     </div>
-                    <input type="search" id="card-name" placeholder="Name Carta">
+                    <input type="search" id="card-name" placeholder="Nome Carta">
                     <button id="search-cards">Cerca</button>
                     <div id="error-message-duplicate" class="error-message-duplicate"><%= message %></div>
                 </div>
 
-                <div id="choose" class="dashboard-create-choose hidden">
+                <div id="choose" class="dashboard-create-choose hidden row">
 
-                    <div class="dashboard-create-choose-image">
+                    <div class="dashboard-create-choose-image col-3 col-xl-4 col-sm-5 col-xs-12">
                         <img id="image-choose-card" src="" alt="">
                     </div>
 
-                    <div class="dashboard-create-choose-text">
+                    <div class="dashboard-create-choose-text col-9 col-xl-8 col-sm-7 col-xs-12">
                         <h3>Mettila subito in vendita, scegli quantità e prezzo!</h3>
                         
                         <div><input id="input-number-card" type="number" placeholder="1" value=""></div>
@@ -53,7 +53,7 @@
                 <div id="card" class="dashboard-create-cards flex">
 
                 </div>
-            </dashboard-create>
+            </div>
 
 
         </main>

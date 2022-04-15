@@ -44,7 +44,10 @@
     color: crimson;
   }
   &-search {
-    margin-top: 1em;
+    margin-top: 2em;
+    & > *{
+      padding-bottom: 1em;
+    }
     .error-message-duplicate {
       padding-top: 2em;
       color: crimson;
@@ -55,8 +58,8 @@
     padding: 3em 1em;
     .container-card {
       position: relative;
-      width: calc(20% - 1em);
-      margin: 0.5em;
+      // width: calc(20% - 1em);
+      padding: 0.5em;
       img {
         width: 100%;
       }
@@ -67,6 +70,7 @@
   }
   &-choose {
     margin-top: 3em;
+    flex-wrap: wrap;
     &-text {
       padding-left: 2em;
       #error-mex-number,
@@ -80,6 +84,40 @@
       & button {
         margin-top: 2em;
       }
+    }
+    img{
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dashboard-create {
+    padding: 2em;
+    &-choose-text{
+      
+      &>* {
+        margin-bottom: .2em;
+      }
+      
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .dashboard-create {
+    padding: 3em;
+    &-choose h3{
+      margin-top: 2em;
+    }
+    &-choose-text{
+      padding-left: 0;
+      & > *{
+        margin-bottom: .5em;
+      }
+    }
+    input{
+      width: 120px;
     }
   }
 }

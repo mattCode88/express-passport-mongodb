@@ -5,6 +5,9 @@ export default class DashboardShow extends CardGenerator{
         super();
       
         this.btnSearch = document.getElementById('btn-search');
+        this.advancedSearch = document.getElementById('filter-show');
+        this.containerFilters = document.getElementById('dashboard-show-filter');
+        this.nameSearch = document.getElementById('name-search');
 
         fetch(`http://localhost:3000/api/card/show?name=${document.getElementById('user-name-id').textContent}`)
         .then(risp => {
@@ -18,6 +21,34 @@ export default class DashboardShow extends CardGenerator{
             this.generateOption();
 
             this.createCards(dati);
+
+            this.expandSearch();
+
+            this.eventClick();
+
+            this.nameSearch.addEventListener('keypress', e => {
+                if (e.key === 'Enter') {
+
+                    let newDati = [],
+                        insertName = e.target.value.toLowerCase();
+                    
+                    e.target.value = '';
+
+                    dati.forEach(element => {
+
+                        if (element.name.toLowerCase() === insertName) {
+                            newDati.push(element);
+                            this.createCards(newDati);
+                        }
+
+                        if (element.name.toLowerCase().indexOf(insertName) !== -1) {
+                            newDati.push(element);
+                            this.createCards(newDati);
+                        }
+                    })
+
+                }
+            })
 
             this.btnSearch.addEventListener('click', () => {
                 
@@ -96,11 +127,18 @@ export default class DashboardShow extends CardGenerator{
                 }
 
             })
-
-            this.eventClick();
             
         })
 
+    }
+
+    expandSearch = () => {
+        this.advancedSearch.addEventListener('click', e => {
+  
+            this.containerFilters.classList.contains('hidden') ? this.containerFilters.classList.remove('hidden') :
+                this.containerFilters.classList.add('hidden');
+            
+        })
     }
 
     eventClick = () => {
@@ -116,15 +154,20 @@ export default class DashboardShow extends CardGenerator{
                     }
                 });
 
+                let height = e.target.parentElement.clientHeight;
+
                 e.target.parentElement.classList.add('hidden');
+
+                e.target.parentNode.nextElementSibling.style.minHeight = height + 'px';
+
                 e.target.parentNode.nextElementSibling.classList.remove('hidden');
 
             }
 
             if (e.target.textContent === 'X') {
 
-                e.target.parentNode.parentNode.classList.add('hidden');
-                e.target.parentNode.parentNode.parentNode.firstChild.classList.remove('hidden');
+                e.target.parentNode.parentNode.parentNode.classList.add('hidden');
+                e.target.parentNode.parentNode.parentNode.parentNode.firstChild.classList.remove('hidden');
 
             }
 
